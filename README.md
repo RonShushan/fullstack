@@ -1,1 +1,1 @@
-fullstak web
+fullstack web
