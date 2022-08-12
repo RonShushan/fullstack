@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var mineDv = ""
+        var names = ['a', 'b', 'c'];
+
+        function createDiv(str) {
+            mineDv = document.createElement("div");
+            mineDv.innerHTML = "hello from " + str;
+            document.body.appendChild(mineDv);
+        }
+
+        for (var i = 0; i < names.length; i++) {
+
+            createDiv(names[i]);
+        }
+    </script>
+
+</body>
+
+</html>
