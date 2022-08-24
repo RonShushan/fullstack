@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <style>
+        .HeaderCl {
+            font-size: 40px;
+        }
+        
+        .rowDV {
+            padding: 20px;
+        }
+        
+        .cardTitle {
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="posts.js"></script>
+    <script>
+        var Container = '<div class="containerCl" id="containRDV"></div>'
+        document.body.innerHTML += Container
+
+        containRDV.innerHTML += '<div class="rowDV"> This is header </div><hr>'
+        containRDV.innerHTML += '<div class="rowDV"> This is Buttons </div><hr>'
+        containRDV.innerHTML += ' <div class="rowDV" id="infOnClick"> </div><hr>'
+
+        containRDV.innerHTML +=
+            '<div class="rowDV row" id="productsDV">  </div><hr>'
+        containRDV.innerHTML += '<div class="rowDV"> This is Footer </div><hr>'
+
+        for (var i = 0; i < albums.length; i++) {
+            BuildAlbum(albums[i])
+        }
+
+        function BuildAlbum(albums) {
+            var AlbumString = ''
+            AlbumString += '<div class="col-3">'
+            AlbumString +=
+                `<div class="card" style="border: 1px solid gray; margin-top:10px; cursor:pointer" onclick="imgClicked(${albums.id},${albums.title},'${albums.url}')"</div>`
+            AlbumString +=
+                '<img src="' +
+                albums.url +
+                '" class="card-img-top" title="123455" style="width:100% !important" />'
+            AlbumString += '<div class="card-body">'
+            AlbumString += '<h5 class="card-title">id: ' + albums.id + '</h5>'
+            AlbumString += '<p class="card-text cardTitle">' + albums.title + '</p>'
+            AlbumString += '</div>'
+            AlbumString += '</div>'
+            AlbumString += '</div>'
+            productsDV.innerHTML += AlbumString
+        }
+
+        function imgClicked(id, title, url) {
+            console.log('id :', id)
+            console.log('title :', title)
+            console.log('url :', url)
+            infOnClick.innerHTML = 'Id : ' + id + '<br />' + 'Title : ' + title + '<br />' + 'Url : ' + url;
+        }
+        // עבודה מקוצרת עם טילדות ללא פסיקים או גרשיים בין לבין (מלבד הגרשיים של הטילדה)
+        title = ["abc", "def", "defdef"];
+        subject = "ccc";
+        title = `title : ${title} \n subject is: ${subject} `
+        console.log(title)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="todos_title.js"></script>
+    <style>
+        .titleDVCss {
+            font-size: 30px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .HrColor {
+            border-top: 4px dashed blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var titleDv = ''
+        var hrDV = ''
+
+
+        for (var i = 0; i < todo.length; i++) {
+            printTitles(todo[i].title)
+        }
+
+        function printTitles(title) {
+            titleDv = document.createElement('div');
+            titleDv.innerHTML = title
+            titleDv.className = 'titleDVCss'
+            document.body.appendChild(titleDv)
+            createHR()
+        }
+
+        function createHR() {
+            hrDV = document.createElement('hr');
+            hrDV.className = 'HrColor'
+            document.body.appendChild(hrDV)
+        }
+    </script>
+</body>
+
+</html>

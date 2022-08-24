@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="json.js"></script>
+    <style>
+        .titleDV {
+            font-size: 30px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .HrDvCss {
+            border-top: 4px dashed blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="containerId"></div>
+    </div>
+
+    <script>
+        var printToHtml = ''
+
+        for (var i = 0; i < todo.length; i++) {
+            printTitle(todo[i].title)
+        }
+
+        function printTitle(title) {
+            printToHtml += '<div class="titleDV">' + title + '</div>'
+
+            createHR()
+        }
+
+        function createHR() {
+            printToHtml += '<hr class="HrDvCss"<hr/>'
+        }
+
+
+        containerId.innerHTML = printToHtml
+    </script>
+</body>
+
+</html>

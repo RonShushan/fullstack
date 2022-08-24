@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <script src="json.js"></script>
+
+
+</head>
+
+<body>
+    <div id="cardContainer"></div>
+    </div>
+    <script>
+        var printToHtml = ''
+
+        for (var i = 0; i < todo.length; i++) {
+            printTitle(todo[i])
+        }
+
+        function printTitle(todo) {
+            printToHtml += '<div class="cardContainer"</div>'
+            printToHtml += '<div class="id:' + todo.id + '</div>'
+            printToHtml += '<div class="title:' + todo.title + '</div>'
+            printToHtml += '</div>'
+        }
+        cardContainer.innerHTML = printToHtml
+    </script>
+</body>
+
+</html>
