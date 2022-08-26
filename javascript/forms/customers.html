@@ -16,7 +16,7 @@
             border-radius: 10px;
         }
         
-        .rowcontainer {
+        .rowContainer {
             background-color: #f5f5f5;
         }
     </style>
@@ -26,7 +26,7 @@
 
 
     <div class="row p-5 ">
-        <div class="col-8 formBorder rowcontainer">
+        <div class="col-8 formBorder rowContainer">
             <form id="formEL">
 
                 <div class="form-group">
@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                     <label for="mailInputDV">Email address</label>
-                    <input type="text" class="form-control" id="mailInputDV" placeholder="Enter email">
+                    <input type="email" class="form-control" id="mailInputDV" placeholder="Enter email">
 
 
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -83,15 +83,14 @@
             users.push(user)
             console.log(users);
             formEL.reset();
-
-        }
-        for (var i = 0; i < users.length; i++) {
-            printToHtml(users[i])
         }
 
         function printToHtml(users) {
-            // console.log(JSON.stringify(users));
-            document.body.innerHTML += 'name :' + users[i].name + '<br> mail :' + users[i].mail + '<br> phone :' + users[i].phone + '<br> Select :' + users[i].Select;
+            for (var i = 0; i < users.length; i++) {
+                printToHtml(users[i])
+                    // console.log(JSON.stringify(users));
+                document.body.innerHTML += 'name :' + users[i].name + '<br> mail :' + users[i].mail + '<br> phone :' + users[i].phone + '<br> Select :' + users[i].Select + '<hr>';
+            }
         }
     </script>
 
