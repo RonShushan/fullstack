@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חנות רהיטים</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <style>
+        .formBorder {
+            border: 1px solid gray;
+            padding: 70px;
+            border-radius: 10px;
+        }
+        
+        .rowContainer {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row p-5 ">
+        <div class="col-8 formBorder rowContainer">
+            <form id="formEL">
+
+                <div class="form-group">
+                    <label for="productDV">ספות</label>
+                    <select class="form-control" id="productDV">
+                          <option value=800>ספת יחיד , 80 קילו :800₪</option>
+                          <option value=1000>ספה זוגית , 100 קילו :1000₪</option>
+                          <option value=1200>ספה 3 מושבים , 120 קילו :1200₪ </option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="floorDV">קומה</label>
+                    <input type="text" class="form-control" id="floorDV" placeholder="תעריף לקומה: מספר הקומה * משקל הספה   ">
+
+
+                </div>
+
+                <div class="form-group">
+                    <label for="distanceDV">מרחק</label>
+                    <input type="text" class="form-control" id="distanceDV" placeholder=" תעריף לק״מ: 5₪    ">
+
+
+                </div>
+
+
+
+
+
+
+
+                <button type="button" class="btn btn-primary m-4" onclick="onSubmit()">הוסף לסל קניות</button>
+                <button type="button" class="btn btn-success m-4" onclick="printPost(users)">לתשלום לחץ כאן</button>
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="col-8 p-5" id="tableDV">
+        <table class="table">
+            <thead>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var flag = true;
+
+        var users = [];
+
+        function onSubmit() {
+            var user = {
+                product: productDV.value,
+                floor: floorDV.value,
+                distance: distanceDV.value,
+
+
+            };
+            users.push(user)
+                // console.log(users);
+            formEL.reset();
+        }
+
+        function printPost() {
+            var Weight = "";
+            tableBody.innerHTML =
+                `<tr>
+                                <th scope="col">סוג ספה</th>
+                                <th scope="col">קומה</th>
+                                <th scope="col">מרחק</th>
+                                <th scope="col">סה״כ לתשלום</th>
+                        </tr>`
+            for (var i = 0; i < users.length; i++) {
+                var user = users[i];
+                if (users[i].product == 800)
+                    Weight = 80;
+                if (users[i].product == 1000)
+                    Weight = 100;
+                if (users[i].product == 1200)
+                    Weight = 120;
+
+                tableBody.innerHTML +=
+                    `<tr>
+                                
+                        <td scope="col">${sofa(users[i].product)}</td>
+                        <td>${user.floor}</td>
+                        <td>${users[i].distance}</td>
+                        <td>${((users[i].product * 1) + (Weight * users[i].floor * 1) + (users[i].distance * 5))}₪</td>
+
+                    </tr>`
+
+            }
+        }
+
+
+        function showHideTable() {
+            if (flag) {
+                printPost()
+            }
+        }
+
+        function sofa(categoryId) {
+
+            if (categoryId == 800)
+                return ' ספת יחיד';
+            if (categoryId == 1000)
+                return 'ספה זוגית';
+            if (categoryId == 1200)
+                return 'ספה 3 מושבים '
+
+        }
+    </script>
+
+</body>
+
+</html>

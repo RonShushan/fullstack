@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קפיטריה</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <style>
+        .formBorder {
+            border: 1px solid gray;
+            padding: 70px;
+            border-radius: 10px;
+        }
+        
+        .rowContainer {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row p-5 ">
+        <div class="col-8 formBorder rowContainer">
+            <form id="formEL">
+
+                <div class="form-group">
+                    <h1>תפריט:</h1>
+                    <h5>טוסט ריק: 12 ש״ח</h5>
+                    <h5>תוספת רגילה :2 ש״ח</h5>
+                    <h5>תוספת גבינה :3 ש״ח</h5>
+                    <hr>
+                    <h5>:תוספות לבחירה</h5>
+
+                    <input type="checkbox" value="" id="olives">
+                    <label for="olives">זיתים</label><br>
+                    <input type="checkbox" value="" id="Onion">
+                    <label for="Onion">בצל</label><br>
+                    <input type="checkbox" value="" id="mushrooms">
+                    <label for="mushrooms">פטריות</label><br>
+                    <input type="checkbox" value="" id="Mozzarella">
+                    <label for="Mozzarella">מוצרלה</label><br>
+                    <input type="checkbox" value="" id="BulgarianCheese">
+                    <label for="BulgarianCheese">בולגרית</label><br>
+                    <input type="checkbox" value="" id="Cheddar">
+                    <label for="Cheddar">גבינת צ׳דר</label><br>
+                </div>
+
+
+
+                <button type="button" class="btn btn-primary m-4" onclick="PaymentCal()">הזמן</button>
+
+                <!-- <button type="button" class="btn btn-success m-4" onclick="printPost(users)">Print customer Table </button> -->
+
+
+            </form>
+        </div>
+    </div>
+    <div id="pay"></div>
+    </div>
+</body>
+<script>
+    function PaymentCal() {
+        var total = 12;
+        pay.innerHTML = "";
+
+        if (olives.checked)
+            total += 2;
+        if (Onion.checked)
+            total += 2;
+        if (mushrooms.checked)
+            total += 2;
+        if (Mozzarella.checked)
+            total += 3;
+        if (BulgarianCheese.checked)
+            total += 3;
+        if (Cheddar.checked)
+            total += 3;
+
+        pay.innerHTML = `
+    סה״כ לתשלום : ${total} ש״ח
+    <br/>
+    <button type="button" class="btn btn-success m-4" onclick="onSubmit()">שלם </button>
+    <br/>
+    `;
+        formEL.reset();
+
+    }
+
+
+    function onSubmit() {
+        pay.innerHTML = "";
+        pay.innerHTML += "ההזמנה בוצעה בהצלחה!";
+    }
+</script>
+
+</html>

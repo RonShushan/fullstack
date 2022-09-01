@@ -17,4 +17,4 @@ if (num3 > max) {
 if (num4 > max) {
     max = num4;
 }
-alart(max)
+alert(max)
