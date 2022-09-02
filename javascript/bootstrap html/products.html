@@ -48,10 +48,7 @@
             AlbumString += '<div class="col-3">'
             AlbumString +=
                 `<div class="card" style="border: 1px solid gray; margin-top:10px; cursor:pointer" onclick="imgClicked(${albums.id},${albums.title},'${albums.url}')"</div>`
-            AlbumString +=
-                '<img src="' +
-                albums.url +
-                '" class="card-img-top" title="123455" style="width:100% !important" />'
+            AlbumString += '<img src="' + albums.url + '" class="card-img-top" title="123455" style="width:100% !important" />'
             AlbumString += '<div class="card-body">'
             AlbumString += '<h5 class="card-title">id: ' + albums.id + '</h5>'
             AlbumString += '<p class="card-text cardTitle">' + albums.title + '</p>'

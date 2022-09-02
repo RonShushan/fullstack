@@ -50,102 +50,109 @@
                       <option value=3>חומרי ניקוי</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="imageDV">image</label>
+                    <input type="text" class="form-control" id="imageDV" src="" placeholder="enter image url ">
 
 
 
-                <button type="button" class="btn btn-primary m-4" onclick="onSubmit()">הוסף מוצר לרשימה</button>
 
-                <!-- <button type="button" class="btn btn-success m-4" onclick="printPost(users)">Print customer Table </button> -->
-                <button type="button" class="btn btn-success m-4" id="printTable" onclick="showHideTable()">הדפס טבלת מוצרים</button>
+                    <button type="button" class="btn btn-primary m-4" onclick="onSubmit()">הוסף מוצר לרשימה</button>
+
+                    <!-- <button type="button" class="btn btn-success m-4" onclick="printPost(users)">Print customer Table </button> -->
+                    <button type="button" class="btn btn-success m-4" id="printTable" onclick="showHideTable()">הדפס טבלת מוצרים</button>
 
 
             </form>
+            </div>
         </div>
-    </div>
-    <div class="rowDV p-5" id="infOnClick"> </div>
-    <div>
-        <button type="button" class="btn btn-warning m-4" id="milk" onclick="productsTable(1)">מוצרי חלב</button>
-        <button type="button" class="btn btn-danger m-4" id="drink" onclick="productsTable(2)">שתיה</button>
-        <button type="button" class="btn btn-primary m-4" id="clean" onclick="productsTable(3)">חומרי ניקוי</button>
-    </div>
-    <hr>
+        <div class="rowDV p-5" id="infOnClick"> </div>
+        <div>
+            <button type="button" class="btn btn-warning m-4" id="milk" onclick="productsTable(1)">מוצרי חלב</button>
+            <button type="button" class="btn btn-danger m-4" id="drink" onclick="productsTable(2)">שתיה</button>
+            <button type="button" class="btn btn-primary m-4" id="clean" onclick="productsTable(3)">חומרי ניקוי</button>
+        </div>
+        <hr>
 
-    <div class="col-8 p-5" id="tableDV">
-        <table class="table">
-            <thead>
-            </thead>
-            <tbody id="tableBody">
+        <div class="col-8 p-5" id="tableDV">
+            <table class="table">
+                <thead>
+                </thead>
+                <tbody id="tableBody">
 
-            </tbody>
-        </table>
-    </div>
-    <script>
-        var flag = true;
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var flag = true;
 
-        var users = [];
+            var users = [];
 
-        function onSubmit() {
-            var user = {
-                product: productDV.value,
-                price: priceDV.value,
-                category: categoryDV.value,
-                info: formEL.value,
+            function onSubmit() {
+                var user = {
+                    product: productDV.value,
+                    price: priceDV.value,
+                    category: categoryDV.value,
+                    image: imageDV.value,
+                    info: formEL.value,
 
-            };
-            users.push(user)
-                // console.log(users);
-            formEL.reset();
-        }
+                };
+                users.push(user)
+                    // console.log(users);
+                formEL.reset();
+            }
 
-        function printPost() {
-            tableBody.innerHTML =
-                `<tr>
+            function printPost() {
+                tableBody.innerHTML =
+                    `<tr>
                                 <th scope="col">מחיר</th>
                                 <th scope="col">מוצר</th>
                                 <th scope="col">קטגוריה</th>
+                                <th scope="col">תמונה</th>
                                 <th scope="col">פרטים</th>
                         </tr>`
-            for (var i = 0; i < users.length; i++) {
-                var user = users[i];
-                tableBody.innerHTML +=
-                    `<tr>
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i];
+                    tableBody.innerHTML +=
+                        `<tr>
                                 
                         <td>${user.product}</td>
                         <td>${user.price}</td>
                         <td scope="col">${getCategory(users[i].category)}</td>
+                        <td>${user.image}</td>
                         <td> <button type="button" class="btn btn-success" onclick="ShowInfo('${user.product}','${user.price}','${getCategory(users[i].category)}')">info</button></td>
 
                     </tr>`
 
+                }
             }
-        }
 
-        function ShowInfo(product, price, category) {
-            // console.log('name : ' + name + '<br />' + 'mail : ' + mail + '<br />' + 'phone : ' + phone + '<br />' + 'Select1 : ' + Select1 + '<br />' + 'city : ' + city);
+            function ShowInfo(product, price, category, image) {
+                // console.log('name : ' + name + '<br />' + 'mail : ' + mail + '<br />' + 'phone : ' + phone + '<br />' + 'Select1 : ' + Select1 + '<br />' + 'city : ' + city);
 
-            infOnClick.innerHTML = 'מוצר : ' + product + '<br />' + 'מחיר : ' + price + '<br />' + 'קטגוריה : ' + category + '<br />';
-        }
-
-        function showHideTable() {
-            if (flag) {
-                printPost()
-                    // } else {
-                    // tableBody.innerHTML = '';
+                infOnClick.innerHTML = 'מוצר : ' + product + '<br />' + 'מחיר : ' + price + '<br />' + 'קטגוריה : ' + category + '<br />' + 'image' + image;
             }
-        }
-        // flag = !flag;
-        function productsTable(categoryId) {
-            tableBody.innerHTML =
-                `<tr>
+
+            function showHideTable() {
+                if (flag) {
+                    printPost()
+                        // } else {
+                        // tableBody.innerHTML = '';
+                }
+            }
+            // flag = !flag;
+            function productsTable(categoryId) {
+                tableBody.innerHTML =
+                    `<tr>
                                 <th scope="col">מחיר</th>
                                 <th scope="col">מוצר</th>
                                 <th scope="col">קטגוריה</th>
                                 <th scope="col">פרטים</th>
                         </tr>`
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].category == categoryId) {
-                    tableBody.innerHTML +=
-                        `<tr>
+                for (var i = 0; i < users.length; i++) {
+                    if (users[i].category == categoryId) {
+                        tableBody.innerHTML +=
+                            `<tr>
                                 
                         <td>${users[i].product}</td>
                         <td>${users[i].price}</td>
@@ -153,19 +160,19 @@
                         <td> <button type="button" class="btn btn-success" onclick="ShowInfo('${users[i].product}','${users[i].price}','${users[i].category}')">info</button></td>
 
                     </tr>`
+                    }
                 }
             }
-        }
 
-        function getCategory(categoryId) {
-            if (categoryId == 1)
-                return 'מוצרי חלב';
-            if (categoryId == 2)
-                return 'שתיה';
+            function getCategory(categoryId) {
+                if (categoryId == 1)
+                    return 'מוצרי חלב';
+                if (categoryId == 2)
+                    return 'שתיה';
 
-            return 'חומרי ניקוי'
-        }
-    </script>
+                return 'חומרי ניקוי'
+            }
+        </script>
 
 </body>
 
