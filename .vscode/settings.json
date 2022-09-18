@@ -1,5 +1,13 @@
 {
     "cSpell.words": [
+        "fadein",
+        "scroller",
+        "swal",
+        "todos",
+        "xmark",
         "שמירה"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }
