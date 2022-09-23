@@ -82,7 +82,7 @@ function onPrint() {
         <div class="card" style='background-color: rgba(0,0,0,0.0);border: 0px solid gray;background-image: url("note.png"); width:200px; height:250px; margin-left:5%;-webkit-animation: fadein 0.5s;'>
         <button type="button" class="fa-solid fa-square-xmark" id="deleteBtn" onclick="removeItem(${i})"></button>
         <div class="card-body">
-        <div class="card-title scroller" style="width:150px;height:90px;">${user.task}</div><br>
+        <div class="card-title scroller" style="width:150px;height:90px;"><strong>${user.task}</strong></div><br>
         <p class="card-text cardTitle"><strong>${day}.${month}.${year}<br>${user.time}</strong></p>
         </div>
         </div>
