@@ -64,6 +64,10 @@ function onPrint() {
     var index = 1;
 
     for (var i = 0; i < users.length; i++) {
+        printNote(users)
+    }
+
+    function printNote(user) {
         var user = users[i]
 
         var inputDate = new Date(user.date)

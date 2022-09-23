@@ -31,12 +31,8 @@
     <div id="showContainer" class="row"></div>
     <script>
         var shows = []
-        var urlShowAll = 'http://api.tvmaze.com/shows/12345'
+        var urlShowAll = 'http://api.tvmaze.com/shows'
         var url = 'https://api.tvmaze.com/search/shows?q='
-
-        //var id = new URLSearchParams(window.location.search).get('id')
-        //console.log('ID : ', id, window.location.search)
-        //onSubmit('girls')
         showAll()
 
         function onSubmit(val) {
@@ -61,7 +57,7 @@
             $.ajax({
                 type: 'GET',
                 datatype: 'json',
-                url: 'http://api.tvmaze.com/shows',
+                url: urlShowAll,
                 success: function(data) {
                     shows = data
                     printShowsAll()
