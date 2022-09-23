@@ -66,6 +66,12 @@ function onPrint() {
     for (var i = 0; i < users.length; i++) {
         var user = users[i]
 
+        var inputDate = new Date(user.date)
+        var day = inputDate.getDate();
+        var month = inputDate.getMonth() + 1;
+        var year = inputDate.getFullYear();
+
+
         var userPrint = '';
         userPrint = `
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
@@ -73,7 +79,7 @@ function onPrint() {
         <button type="button" class="fa-solid fa-square-xmark" id="deleteBtn" onclick="removeItem(${i})"></button>
         <div class="card-body">
         <div class="card-title scroller" style="width:150px;height:90px;">${user.task}</div><br>
-        <p class="card-text cardTitle"><strong>${user.date}<br>${user.time}</strong></p>
+        <p class="card-text cardTitle"><strong>${day}.${month}.${year}<br>${user.time}</strong></p>
         </div>
         </div>
         </div>
