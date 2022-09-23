@@ -17,7 +17,6 @@ function onSubmit() {
     } else {
         users.push(user)
         localStorage.users = JSON.stringify(users)
-
         onPrint()
     }
 }
@@ -82,7 +81,6 @@ function onPrint() {
         `;
         printData.innerHTML += userPrint
         index++;
-
     }
 }
 
