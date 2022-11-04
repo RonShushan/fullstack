@@ -6,7 +6,7 @@ class Car {
     brand = ''
     price = 0
     year = 0
-    carService = []
+    carServices = []
 
     constructor(id, brand, price, year) {
         this.id = id
@@ -19,19 +19,19 @@ class Car {
             date: date,
             km: km,
         }
-        this.carService.push(ob)
+        this.carServices.push(ob)
     }
 }
 
 let mazda = new Car(1, 'mazda', 90000, 2022)
-
 let honda = new Car(2, 'honda', 98000, 2021)
+CarsArray.push(mazda, honda)
 
-mazda.setService('20/10/2022', '50,000')
-mazda.setService('20/11/2022', '60,000')
-mazda.setService('20/12/2022', '70,000')
+// mazda.setService('20/10/2022', '50,000')
+// mazda.setService('20/11/2022', '60,000')
+// mazda.setService('20/12/2022', '70,000')
 
-honda.setService('20/8/2022', '20,000')
+// honda.setService('20/8/2022', '20,000')
 
 console.log(mazda, honda)
 
@@ -40,4 +40,12 @@ function onSubmit() {
     CarsArray.push(car)
     console.log(CarsArray)
     id++
+}
+
+function addServiceToCar() {
+    let id = idDV.value;
+
+    let carObject = CarsArray.find((car) => id === car.id)
+    carObject.carServices(dateDV.value, kmDV.value)
+    console.log(CarsArray)
 }
