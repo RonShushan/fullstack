@@ -85,7 +85,7 @@ function onPrint() {
         <div class="card-title scroller" style="width:150px;height:90px;"><strong>${user.task}</strong></div><br>
         <p class="card-text cardTitle"><strong>${day}.${month}.${year}<br>${user.time}</strong></p>
         </div>
-        </div>
+        </div
         </div>
         </div>
         `;

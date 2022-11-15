@@ -41,9 +41,7 @@ function printShowsToHtml(data) {
     <div class="card-body">
       <h5 class="card-title">${show.name}</h5>
       <p class="card-text">${show.summary}</p>
-      <a href="#" class="btn btn-primary" onClick="tvShowClicked(${
-        show.id
-      })">Go somewhere</a>
+      <a href="#" class="btn btn-primary" onClick="tvShowClicked(${show.id})">Go somewhere</a>
     </div>
   </div>
     `
