@@ -4,6 +4,10 @@
     background-color: #fc8404;
 }
 
+.navbar {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
 #coinDV {
     background-image: url("bitcoin-div.png");
     margin-left: auto;

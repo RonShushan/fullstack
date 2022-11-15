@@ -18,18 +18,32 @@
 
 <body>
     <div class="topTitle p-4"><strong>Crypto</strong></div>
-    <div class="rowDV" id="infOnClick">
-        <div>
-            <button type="button" class="btn btn-primary" id="Coins" onclick="productsTable()">Coins </button>
-            <button type="button" class="btn btn-primary" id="Chart" onclick="productsTable1()">Chart </button>
-            <button type="button" class="btn btn-primary" id="About" onclick="printToHtml()">About </button>
-        </div>
+    <div id="coinDV" class="row p-5 ">
+
+        <nav class="navbar navbar-expand-lg bg-light" style=" background-color:  rgba(0,0,0,0.0);
+        ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="project.html">coin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="new.html">chart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">about</a>
+                        </li>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                </div>
+            </div>
+        </nav>
+        <div id="coins" class="row p-5 "></div>
     </div>
-    <div id="coinDV" class="row p-5 "></div>
-    <div id="chartContainer" style="height: 370px; width: 100%"></div>
-
-
-
 
 </body>
 
