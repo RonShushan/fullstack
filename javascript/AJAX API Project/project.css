@@ -19,8 +19,10 @@
 .card {
     margin-left: auto;
     margin-right: auto;
+    float:left;
     /* background-image: url("bitcoin-back.png"); */
 }
+
 
 .card-header .fa {
     transition: .3s transform ease-in-out;
@@ -30,7 +32,10 @@
     transform: rotate(90deg);
 }
 
+.card-title {
+    float: left;
+}
+
 #SwitchCheck {
-    margin-bottom: 0px;
-    margin-left: 200px;
+    float:right;
 }

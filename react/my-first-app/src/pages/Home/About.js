@@ -1,15 +1,13 @@
-
 import React, { Component } from 'react'
+import './Home.css'
 
 class About extends Component {
-    state = {}
-
     constructor(props) {
         super(props);
     }
-
+    state = {}
     render() {
-        return (<div></div>);
+        return (  );
     }
 }
 

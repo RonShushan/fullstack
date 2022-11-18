@@ -5,7 +5,7 @@ class Home extends Component {
     //JS Start
 
     state = {
-        name: "shay",
+        name: "ron",
         mail: "",
         phone: "",
         movies: []
@@ -21,8 +21,8 @@ class Home extends Component {
     }
 
     changeMyName() {
-        this.setState({ name: "avigail" })
-        //this.state.name = "avigail";
+        this.setState({ name: "chen" })
+        //this.state.name = "chen";
         //this.ob.name = "Ob123"
         //printToHtml();
         console.log("My name is : ", this.state, this.ob)
