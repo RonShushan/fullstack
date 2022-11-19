@@ -38,7 +38,7 @@ function printCoinsToHtml(data) {
         <div class="card" style='margin-top: 70px; width:320px; height:190px;'>
         <div class="card-body">
         <div class="form-check form-switch SwitchCheck">
-        <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
+        <input class="form-check-input" type="checkbox" role="swit/ch" id="SwitchCheck">
         <label class="form-check-label" for="flexSwitchCheckDefault"></label>
         <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style=width:50px; height:50px;>
         </div>
