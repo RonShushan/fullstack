@@ -21,10 +21,10 @@ function callAjax(_function, id = 0) {
         type: 'GET',
         datatype: 'json',
         url: url,
-        success: function(data) {
+        success: function (data) {
             _function(data)
         },
-        error: function(error) {
+        error: function (error) {
             console.log('error : ', error)
         },
     })
@@ -35,13 +35,13 @@ function printShowsToHtml(data) {
     shows.map((show) => {
         let str = `
       <div class="card col-3">
-    <img class="card-img-top" src="${
-      show.image ? show.image.medium : ''
-    }" alt="Card image cap">
+    <img class="card-img-top" src="${show.image ? show.image.medium : ''
+            }" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${show.name}</h5>
       <p class="card-text">${show.summary}</p>
-      <a href="#" class="btn btn-primary" onClick="tvShowClicked(${show.id})">Go somewhere</a>
+      <a href="#" class="btn btn-primary" onClick="tvShowClicked(${show.id
+            })">Go somewhere</a>
     </div>
   </div>
     `

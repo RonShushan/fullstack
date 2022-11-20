@@ -5,38 +5,58 @@
 }
 
 .navbar {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-image: url("");
+
 }
 
-#coinDV {
+.nav-link
+
+.d-flex{
+    float:right;
+}
+
+#coinContainer  {
     background-image: url("bitcoin-div.png");
     margin-left: auto;
     margin-right: auto;
     overflow: auto;
-    height: 750px;
+    height: 900px;
+}
+
+#coinContainer1 {
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
 }
 
 .card {
     margin-left: auto;
     margin-right: auto;
-    float:left;
-    overflow: hidden;
-    /* background-image: url("bitcoin-back.png"); */
+        /* background-image: url("bitcoin-back.png"); */
 }
 
-
-.card-header .fa {
-    transition: .3s transform ease-in-out;
+.card-body{
+    margin-right: 60px;
 }
 
-.card-header .collapsed .fa {
-    transform: rotate(90deg);
-}
 
 .card-title {
-    float: left;
+    display: inline;
+    margin-left: 20px;
+    text-align: left;
+    text-align: left;
+    width: 80%;
+
 }
+
+.card-text {
+    text-align: left;
+    
+}
+
 
 #SwitchCheck {
     float:right;
+    width: 20%;
 }
