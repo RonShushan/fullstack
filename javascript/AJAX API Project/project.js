@@ -1,46 +1,23 @@
-let baseUrl = 'https://api.coingecko.com/api/v3/coins'
-let coins = []
-let currentCoin = {}
+var coins = []
+var singleCoin = {}
+var urlAllCoins = 'https://api.coingecko.com/api/v3/coins'
+var url = 'https://api.coingecko.com/api/v3/coins/'
 
-callAjax(printCoinsToHtml, 0)
+AllCoins()
 
-function callAjax(_function, id = 0) {
-    //let url = id == 0 ? baseUrl : baseUrl + '/' + id
-    let url
-
-    if (id == 0) {
-        url = baseUrl
-    } else {
-        url = baseUrl
-    }
-
-
-    $.ajax({
-        type: 'GET',
-        datatype: 'json',
-        url: url,
-        success: function (data) {
-            _function(data)
-        },
-        error: function (error) {
-            console.log('error : ', error)
-        },
-    })
-}
-
-function searchBtn(val) {
-    userInputValue = showInputDV.value
-
+function onSubmit(val) {
+    console.log('SUBMIT : ', val,)
+    userInputValue = coinInputDV.value
     coinContainer.innerHTML = ''
 
-
     $.ajax({
         type: 'GET',
         datatype: 'json',
-        url: 'https://api.coingecko.com/api/v3/coins/' + val,
+        url: url + val,
         success: function (data) {
-            coins = data
-            printCoins()
+            singleCoin = data
+            navDV()
+            printSingleCoin(singleCoin)
         },
         error: function (error) {
             console.log('error : ', error)
@@ -48,49 +25,95 @@ function searchBtn(val) {
     })
 }
 
-function printCoinsToHtml(data) {
-    coins = data
-    coins.map((coin) => {
-        let str = `
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-        <div class="card" style='margin-top: 70px; width:320px; height:190px;'>
-        <div class="card-body">
-        <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
-        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-        <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
-        </div>
-        </div>
-        <div>
-        <div class="card-text">${coin.name}</div><br>
-        <div>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
-        <div class="collapse" id="collapseExample">
-        <div class="card card-body">details</div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        
-    `
-
-        coinContainer.innerHTML += str
+function AllCoins() {
+    $.ajax({
+        type: 'GET',
+        datatype: 'json',
+        url: urlAllCoins,
+        success: function (data) {
+            coins = data
+            navDV()
+            printCoinsAll()
+        },
+        error: function (error) {
+            console.log('error : ', error)
+        },
     })
-
-    console.log('coins : ', coins)
 }
 
 
-
-function printCoins() {
+function printCoinsAll() {
     for (var i = 0; i < coins.length; i++) {
-        printCoin(coins[i].coin)
+        printCoin(coins[i])
     }
 }
-function printCoin(coin) {
+
+function printSingleCoin() {
+    for (var i = 0; i < coin.length; i++) {
+        printCoin(coin[i])
+    }
+}
+
+function navDV() {
     coinContainer1.innerHTML += `
-    <div class="card" style='margin-top: 70px; width:320px; height:190px;'>
+    <nav class="navbar navbar-expand-lg bg-clear">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="project.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="new.html">Live Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="printToHtml()">About</a>
+                </li>
+            </div>
+            <div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 coinInputDV" type="search" id="coinInputDV"
+                        placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success coinInputDV" type="submit"
+                        onclick="onSubmit(coinInputDV.value)">Search</button>
+                </form>
+            </div>
+        </div>
+</nav>`
+}
+
+
+function printCoin(coin) {
+    coinContainer.innerHTML += `
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+            <div class="card" style='margin-top: 70px; width:250px; height:190px;'>
+            <div class="card-body">
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
+            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+            <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
+            </div>
+            </div>
+            <div>
+            <div class="card-text">${coin.name}</div>
+            <br>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
+            <div class="collapse" id="collapseExample">
+            <div class="card card-body">details</div>
+            </div>
+            </div>
+            </div>
+            </div> 
+        `
+}
+
+function printSingleCoin(coin) {
+    coinContainer.innerHTML += `
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+    <div class="card" style='margin: 10px; margin-top: 50px; width:250px; height:190px;'>
     <div class="card-body">
     <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
@@ -99,26 +122,14 @@ function printCoin(coin) {
     </div>
     </div>
     <div>
-    <div class="card-text">${coin.name}</div><br>
-    <div>
+    <div class="card-text">${coin.name}</div>
+    <br>
     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
     <div class="collapse" id="collapseExample">
     <div class="card card-body">details</div>
     </div>
     </div>
     </div>
-    </div>
-
-    
+    </div> 
 `
-
-
 }
-
-
-// function printToHtml() {
-//     coinContainer.innerHTML = ("my name is Ron Shushan and this in my Ajax project")
-//     coinContainer.className = "mainDvClass"
-//     document.body.appendChild(coinContainer)
-
-// }
