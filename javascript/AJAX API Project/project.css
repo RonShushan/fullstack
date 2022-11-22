@@ -18,6 +18,10 @@ body{
 
 }
 
+.navbar-toggler {
+    border: 5px solid rgb(0, 0, 0);
+}
+
 .nav-link
 .d-flex{
     float:right;
@@ -37,14 +41,29 @@ body{
 }
 
 
-.chart{
-    background-image: url("bitcoin-div.png");
-    height: 1100px;
+.chartContainer{
     margin-left: auto;
     margin-right: auto;
-    overflow: scroll;
     
+}
 
+#AboutDV{
+    height: 150px; 
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    background-color: #f8b262;
+    border-radius: 12px;
+    opacity: 90%;
+    overflow:auto;
+
+}
+
+#AboutInfo{
+    margin-top: 30px;
+    text-align: left;
+    overflow: hidden;
 
 }
 

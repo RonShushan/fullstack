@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html>
-<!-- https://canvasjs.com/javascript-charts/multi-series-chart/ -->
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <title>Ajax project</title>
+    <script src="project.js"></script>
+    <link rel="stylesheet" href="project.css" />
+
+
+</head>
+
+<body>
+    <div class="topTitle p-4"><strong>Crypto</strong></div>
+    <!-- <div class="chart p-5"> -->
+    <!-- <nav class="navbar navbar-expand-lg bg-clear" style="margin-left: 24px;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="project.html">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="new.html">Live Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="printToHtml()">About</a>
+                        </li>
+                    </div>
+                    <div>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2 coinInputDV" type="search" id="coinInputDV"
+                                placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success coinInputDV" type="submit"
+                                onclick="onSubmit(coinInputDV.value)">Search</button>
+                        </form>
+                    </div>
+                </div>
+        </nav> -->
+    <div id="navbarDV" class="row p-1" style="height: 30px;">
+        <div id="chartContainer" class="row col-1 mt-5 pt-5" style="height: 370px; width: 76%"></div>
+    </div>
+    </div>
+
     <script>
-        window.onload = function() {
+        window.onload = function () {
             var chart = new CanvasJS.Chart('chartContainer', {
                 animationEnabled: true,
                 title: {
@@ -51,8 +101,8 @@
                     }, {
                         x: new Date(2017, 6, 10),
                         y: 1857
-                    }, ],
-                }, ],
+                    },],
+                },],
             })
             chart.render()
             addToGraph()
@@ -73,7 +123,7 @@
                 let Y = 1900
                 let Day = 11
 
-                setInterval(function() {
+                setInterval(function () {
                     var date = new Date()
                     var minutes = date.getMinutes()
                     var hour = date.getHours()
@@ -92,11 +142,6 @@
             }
         }
     </script>
-</head>
-
-<body>
-    <div id="chartContainer" style="height: 370px; width: 100%"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 
 </html>
