@@ -13,10 +13,10 @@ body{
 
 }
 
-.navbar {
-    background-image: url("");
+/* .navbarDV {
+    height: 30px;;
 
-}
+} */
 
 .navbar-toggler {
     border: 5px solid rgb(0, 0, 0);
@@ -28,10 +28,12 @@ body{
 }
 
 #coinContainer  {
-    margin-left: auto;
-    margin-right: auto;
-    overflow: scroll;
-    height: auto;
+    width:95%; 
+    margin-left:5%; 
+    /* margin-right:5%; */
+    /* overflow: scroll; */
+    /* width:100%; */
+    height:100%;
 }
 
 .canvasjs-chart-container{
@@ -47,9 +49,9 @@ body{
     
 }
 
-#AboutDV{
-    height: 150px; 
-    width: 250px;
+.AboutDV{
+    height: 130px; 
+    width: 350px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
@@ -61,15 +63,26 @@ body{
 }
 
 #AboutInfo{
-    margin-top: 30px;
-    text-align: left;
+    text-align: center;
     overflow: hidden;
+    height: 130px; 
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    background-color: #f8b262;
+    border-radius: 12px;
+    opacity: 90%;
+    font-size: 20px;
 
 }
 
 .card {
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-top: 70px; 
+    width:270px;
+    height:190px;
     border-radius: 10px;
         /* background-image: url("bitcoin-back.png"); */
 }
@@ -79,7 +92,7 @@ body{
   }
 
 .card-body{
-    margin-right: 60px;
+    /* margin-right: 60px; */
     width: 100%;
 
 }

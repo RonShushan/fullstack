@@ -1,29 +1,10 @@
-var coins = []
-var singleCoin = {}
 var urlAllCoins = 'https://api.coingecko.com/api/v3/coins'
 var url = 'https://api.coingecko.com/api/v3/coins/'
+var coins = []
+var singleCoin = []
 
 AllCoins()
 
-function onSubmit(val) {
-    console.log('SUBMIT : ', val,)
-    userInputValue = coinInputDV.value
-    coinContainer.innerHTML = ''
-
-    $.ajax({
-        type: 'GET',
-        datatype: 'json',
-        url: url + val,
-        success: function (data) {
-            singleCoin = data
-            navDV()
-            printSingleCoin(singleCoin)
-        },
-        error: function (error) {
-            console.log('error : ', error)
-        },
-    })
-}
 
 function AllCoins() {
     $.ajax({
@@ -32,7 +13,6 @@ function AllCoins() {
         url: urlAllCoins,
         success: function (data) {
             coins = data
-            navDV()
             printCoinsAll()
         },
         error: function (error) {
@@ -41,17 +21,24 @@ function AllCoins() {
     })
 }
 
+function onSubmit(val) {
+    console.log('SUBMIT : ', val,)
+    userInputValue = coinInputDV.value
+    navDV()
+    navbarDV.innerHTML = ''
 
-function printCoinsAll() {
-    for (var i = 0; i < coins.length; i++) {
-        printCoin(coins[i])
-    }
-}
-
-function printSingleCoin() {
-    for (var i = 0; i < coin.length; i++) {
-        printCoin(coin[i])
-    }
+    $.ajax({
+        type: 'GET',
+        datatype: 'json',
+        url: url + val,
+        success: function (data) {
+            singleCoin = data
+            printSingleCoin(singleCoin)
+        },
+        error: function (error) {
+            console.log('error : ', error)
+        },
+    })
 }
 
 let navbarDV = "";
@@ -60,29 +47,33 @@ function navDV() {
     navbarDV = document.createElement("div");
     navbarDV.innerHTML = (`
     <nav class="navbar navbar-expand-lg bg-clear">
-      <div class="container-fluid">
-      <a class="navbar-brand" href="project.html">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="project.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="chart.html">Live Reports</a>
-          </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link" aria-current="page" href="About.html">About</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-          <input class="form-control me-2 coinInputDV" type="search" id="coinInputDV"
-              placeholder="Search" aria-label="Search">
-          <button class="btn btn-success coinInputDV" type="submit"
-              onclick="onSubmit(coinInputDV.value)">Search</button>
-      </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="chartDIV()">Live Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="About()">About</a>
+                </li>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2 coinInputDV" type="search" id="coinInputDV"
+                    placeholder="Search" aria-label="Search">
+                <button class="btn btn-success coinInputDV" type="submit"
+                    onclick="onSubmit(coinInputDV.value)">Search</button>
+            </form>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
+
     `)
     navbarDV.className = "navbarDV"
     document.body.appendChild(navbarDV)
@@ -90,34 +81,24 @@ function navDV() {
 }
 
 
-function printCoin(coin) {
-    coinContainer.innerHTML += `
-            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
-            <div class="card" style='margin-top: 70px; width:250px; height:190px;'>
-            <div class="card-body">
-            <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
-            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-            <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
-            </div>
-            </div>
-            <div>
-            <div class="card-text">${coin.name}</div>
-            <br>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
-            <div class="collapse" id="collapseExample">
-            <div class="card card-body">details</div>
-            </div>
-            </div>
-            </div>
-            </div> 
-        `
+function printCoinsAll() {
+    for (var i = 0; i < coins.length; i++) {
+        printCoin(coins[i])
+    }
+
 }
 
-function printSingleCoin(coin) {
+function printSingleCoin() {
+    for (var i = 0; i < coins.length; i++) {
+        printCoin(coins[i].coin)
+    }
+
+}
+
+function printCoin(coin) {
     coinContainer.innerHTML += `
     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
-    <div class="card" style='margin: 10px; margin-top: 50px; width:250px; height:190px;'>
+    <div class="card" style='margin: 10px; margin-top: 70px; width:250px; height:190px;'>
     <div class="card-body">
     <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
@@ -137,3 +118,127 @@ function printSingleCoin(coin) {
     </div> 
 `
 }
+
+function printSingleCoin(coin) {
+    coinContainer.innerHTML = `
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+    <div class="card" style='margin: 10px; margin-top: 70px; width:250px; height:190px;'>
+    <div class="card-body">
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
+    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+    <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
+    </div>
+    </div>
+    <div>
+    <div class="card-text">${coin.name}</div>
+    <br>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
+    <div class="collapse" id="collapseExample">
+    <div class="card card-body">details</div>
+    </div>
+    </div>
+    </div>
+    </div> 
+`
+}
+
+function About() {
+    coinContainer.innerHTML = `
+    <div id="AboutInfo" >    
+    <div style="margin-top:20px;" ><h4>About Me</h4></div> 
+    <div>my name is Ron Shushan and this is my ajax project !</div>
+    </div>
+    `
+
+}
+
+
+window.onload = function () {
+    var chart = new CanvasJS.Chart('coinContainer', {
+        animationEnabled: true,
+        title: {
+            text: 'My Coins',
+        },
+        axisX: {
+            valueFormatString: 'DD MMM,YY',
+        },
+        axisY: {
+            title: 'Coin value',
+            suffix: '$',
+        },
+        legend: {
+            cursor: 'pointer',
+            fontSize: 16,
+            itemclick: toggleDataSeries,
+        },
+        toolTip: {
+            shared: true,
+        },
+        data: [{
+            name: 'OB1',
+            type: 'spline',
+            yValueFormatString: '#0.## $',
+            showInLegend: true,
+            dataPoints: [{
+                x: new Date(2017, 6, 4),
+                y: 1800
+            }, {
+                x: new Date(2017, 6, 5),
+                y: 1800
+            }, {
+                x: new Date(2017, 6, 6),
+                y: 1825
+            }, {
+                x: new Date(2017, 6, 7),
+                y: 1827
+            }, {
+                x: new Date(2017, 6, 8),
+                y: 1835
+            }, {
+                x: new Date(2017, 6, 9),
+                y: 1845
+            }, {
+                x: new Date(2017, 6, 10),
+                y: 1857
+            },],
+        },],
+    })
+    chart.render()
+    addToGraph()
+
+    function toggleDataSeries(e) {
+        if (
+            typeof e.dataSeries.visible === 'undefined' ||
+            e.dataSeries.visible
+        ) {
+            e.dataSeries.visible = false
+        } else {
+            e.dataSeries.visible = true
+        }
+        chart.render()
+    }
+
+    function addToGraph() {
+        let Y = 1900
+        let Day = 11
+
+        setInterval(function () {
+            var date = new Date()
+            var minutes = date.getMinutes()
+            var hour = date.getHours()
+
+            let ob = {
+                x: new Date(2017, 6, Day),
+                y: Y,
+            }
+
+            chart.data[0].dataPoints.push(ob)
+            chart.render()
+            Y += 100
+            Day++
+            console.log('C : ', chart.data[0].dataPoints)
+        }, 2000)
+    }
+}
+

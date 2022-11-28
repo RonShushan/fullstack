@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <title>Ajax project</title>
     <script src="project.js"></script>
@@ -19,15 +18,38 @@
 
 <body>
     <div class="topTitle p-4"><strong>Crypto</strong></div>
-    <div id="navbarDV" class="row p-1" style="height: 30px;">
-        <div id="AboutDV" class="row col-3" href="">
-            <div id="AboutInfo">
-                <h4>About Me</h4>
-                <p>my name is Ron Shushan and this is my ajax project!</p>
-            </div>
-        </div>
-    </div>
+    <div id="AboutDV" class="row col-1 " href="">
 
+    </div>
+    <script>
+        navDV()
+        About()
+        function printSingleCoin(coin) {
+            let AboutDV = `
+            <div class="topTitle p-4"><strong>Crypto</strong></div>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+    <div class="card" style='margin: 10px; margin-top: 70px; width:250px; height:190px;'>
+    <div class="card-body">
+    <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
+    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+    <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
+    </div>
+    </div>
+    <div>
+    <div class="card-text">${coin.name}</div>
+    <br>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
+    <div class="collapse" id="collapseExample">
+    <div class="card card-body">details</div>
+    </div>
+    </div>
+    </div>
+    </div> 
+`
+            document.body.innerHTML = AboutDV
+        }
+    </script>
 </body>
 
-</html>
+</html> -->
