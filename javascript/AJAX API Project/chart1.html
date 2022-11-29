@@ -4,7 +4,7 @@
 
 <head>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             var chart = new CanvasJS.Chart('chartContainer', {
                 animationEnabled: true,
                 title: {
@@ -51,8 +51,8 @@
                     }, {
                         x: new Date(2017, 6, 10),
                         y: 1857
-                    }, ],
-                }, ],
+                    },],
+                },],
             })
             chart.render()
             addToGraph()
@@ -73,7 +73,7 @@
                 let Y = 1900
                 let Day = 11
 
-                setInterval(function() {
+                setInterval(function () {
                     var date = new Date()
                     var minutes = date.getMinutes()
                     var hour = date.getHours()
@@ -95,7 +95,7 @@
 </head>
 
 <body>
-    <div id="chartContainer" style="height: 370px; width: 100%"></div>
+    <div id="chartContainer" style="height: 370px; width: 70%"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 

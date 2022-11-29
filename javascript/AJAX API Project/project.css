@@ -82,7 +82,7 @@ body{
     margin-right: auto; */
     margin-top: 70px; 
     width:270px;
-    height:190px;
+    height:auto;
     border-radius: 10px;
         /* background-image: url("bitcoin-back.png"); */
 }
