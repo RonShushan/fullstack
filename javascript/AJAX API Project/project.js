@@ -111,7 +111,7 @@ function printCoin(coin) {
         </div>
         </div>
         <div>
-        <div class="card-text">${coin.name}</div><br>
+        <div class="card-text">${coin.name}</div><br></div>
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">more info</button>
         <div class="collapse" id="collapseExample"><br>
         <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
