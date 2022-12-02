@@ -79,17 +79,19 @@
     <div id="toggle"></div>
 
     <script>
+
         let checked = false
         let arr = [0, 1, 2, 3, 4, 5, 6, 7]
+
 
         for (var i = 0; i < arr.length; i++) {
             var user = arr[i]
             var index = ''
             let card = `<label class="switch">`
             if (user == true) {
-                card += `<input type="checkbox" id="t${user}"   checked onclick="toggleClick('${i}')" />`
+                card += `<input type="checkbox" id="t"  onclick="toggleClick('${i}')" />`
             } else {
-                card += `<input type="checkbox" id="t" onclick="toggleClick('${index}')"/>`
+                card += `<input type="checkbox" id="t" onclick="toggleClick('${i}')"/>`
             }
 
             card += `<span class="slider round"></span></label>`
@@ -99,22 +101,15 @@
 
 
         function toggleClick(id) {
-            var user = {
-                task: t.value,
 
-            }
+            localStorage.arr += JSON.stringify(id)
+            console.log(document.getElementById("t" + id), id)
 
-            if (user.t) {
-                toggle.innerHTML = ''
-            } else {
-                arr.push(user)
-                localStorage.arr = JSON.stringify(arr)
-
-            }
-
-            console.log(document.getElementById("t" + id).checked, id)
 
         }
+
+
+
 
 
     </script>
