@@ -79,38 +79,30 @@
     <div id="toggle"></div>
 
     <script>
+        //   let checked = false
+        let arr = [false, false, true, false, true, false, false, true]
 
-        let checked = false
-        let arr = [0, 1, 2, 3, 4, 5, 6, 7]
+        let coins = [2, 5, 7, 9, 12, 14, 19];
+        let selected = [5, 9];
 
 
-        for (var i = 0; i < arr.length; i++) {
-            var user = arr[i]
-            var index = ''
+        arr.map((item, index) => {
             let card = `<label class="switch">`
-            if (user == true) {
-                card += `<input type="checkbox" id="t"  onclick="toggleClick('${i}')" />`
+            if (item == true) {
+                card += `<input type="checkbox" id="t${index}" checked onclick="toggleClick('${index}')" />`
             } else {
-                card += `<input type="checkbox" id="t" onclick="toggleClick('${i}')"/>`
+                card += `<input type="checkbox" id="t${index}" onclick="toggleClick('${index}')"/>`
             }
 
             card += `<span class="slider round"></span></label>`
 
             toggle.innerHTML += card
-        }
+        })
 
 
         function toggleClick(id) {
-
-            localStorage.arr += JSON.stringify(id)
-            console.log(document.getElementById("t" + id), id)
-
-
+            console.log(document.getElementById("t" + id).checked, id)
         }
-
-
-
-
 
     </script>
 </body>

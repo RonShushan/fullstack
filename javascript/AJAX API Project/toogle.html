@@ -76,32 +76,40 @@
     </label> 
     -->
 
-    <div id="toogle"></div>
+    <div id="toggle"></div>
 
     <script>
         //   let checked = false
         let arr = [false, false, true, false, true, false, false, true]
+        function arrPrint() {
+            arr.map((item, index) => {
+                let card = `<label class="switch">`
+                if (item == true) {
+                    card += `<input type="checkbox" id="t${index}" checked onclick="toggleClick('${index}')" />`
+                } else {
+                    card += `<input type="checkbox" id="t${index}" onclick="toggleClick('${index}')"/>`
+                }
 
-        let coins = [2, 5, 7, 9, 12, 14, 19];
-        let selected = [5, 9];
+                card += `<span class="slider round"></span></label>`
 
-
-        arr.map((item, index) => {
-            let card = `<label class="switch">`
-            if (item == true) {
-                card += `<input type="checkbox" id="t${index}" checked onclick="toggleClick('${index}')" />`
-            } else {
-                card += `<input type="checkbox" id="t${index}" onclick="toggleClick('${index}')"/>`
-            }
-
-            card += `<span class="slider round"></span></label>`
-
-            toogle.innerHTML += card
-        })
+                toggle.innerHTML += card
+            })
+        }
 
 
         function toggleClick(id) {
-            console.log(document.getElementById("t" + id).checked, id)
+            if (arr.id) {
+                toggle.innerHTML += ''
+            } else {
+                localStorage.arr = JSON.stringify((("t" + id)) + document.getElementById("t" + id).checked, id)
+                console.log(document.getElementById("t" + id).checked, id)
+
+
+                if (localStorage.arr) {
+                    arr = JSON.parse(localStorage.arr)
+                    arrPrint()
+                }
+            }
         }
 
     </script>
