@@ -1,0 +1,37 @@
+.cubeContainer {
+    overflow: hidden;
+}
+
+
+.cube {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin: 10px;
+    float: left;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.cubeinfo {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.buttons {
+    overflow: hidden;
+}
+
+.buttons button {
+    float: left;
+}

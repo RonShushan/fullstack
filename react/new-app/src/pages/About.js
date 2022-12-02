@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-//import './about.css'
+import React, { Component } from 'react'
 
 class About extends Component {
     constructor(props) {
@@ -7,7 +6,7 @@ class About extends Component {
     }
     state = {  }
     render() { 
-        return (  );
+        return (<div></div>);
     }
 }
  

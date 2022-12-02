@@ -7,7 +7,8 @@ class Home extends Component {
     //JS Start
 
     state = {
-        name: "ron"
+        name: "ron",
+        titles: ['card A', 'card B', 'card C', 'card D', 'card E']
     }
 
 
