@@ -106,14 +106,14 @@ function printCoin(coin) {
     <div class="card">
     <div class="card-body">
     <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck">
+    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck" onchange="toggleSelect()">
     <label class="form-check-label" for="flexSwitchCheckDefault"></label>
     <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
     </div>
     </div>
     <div>
     <div class="card-text">${coin.name}</div><br>
-    <button class="btn btn-primary" type="" data-bs-toggle="collapse" >more info</button>
+    <button class="btn btn-primary" type="" data-bs-toggle="collapse" data-bs-target="#${IdName}">more info</button>
     <div class="collapse" id="${IdName}"><br>
     <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
     <div><strong>USD :</strong> ${coin.market_data.current_price.usd} $</div>
@@ -153,6 +153,7 @@ function printSingleCoin(coin) {
     </div>
     </div> 
 `
+    console.log(IdName)
 }
 
 
