@@ -1,7 +1,7 @@
 var urlAllCoins = 'https://api.coingecko.com/api/v3/coins'
 var url = 'https://api.coingecko.com/api/v3/coins/'
 var coins = []
-var singleCoin = []
+var checkedCoin = []
 
 AllCoins()
 
@@ -86,75 +86,100 @@ function navDV() {
 
 
 function printCoinsAll() {
+    coinContainer.innerHTML = ''
+    index = 1;
     for (var i = 0; i < coins.length; i++) {
-        printCoin(coins[i])
+        printCoin(coins)
+    }
+
+    function printCoin(coins) {
+        let coin = coins[i]
+
+        // if (localStorage.checkedCoin) {
+        //     checkedCoin = JSON.parse(localStorage.checkedCoin)
+        // }
+
+        let IdName = "cardID" + coin.id
+        let printCoins = ''
+        printCoins += `<div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">`
+        printCoins += `<div class="card">`
+        printCoins += `<div class="card-body">`
+        printCoins += `<div class="form-check form-switch">`
+        if (localStorage.checkedCoin == true) {
+            printCoins += `<input class="form-check-input" style="float:right;" type="checkbox" role="switch" onclick="ifChecked(id)" id = "${coin.symbol} checked" >
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>`
+            checkedCoin = JSON.parse(document.getElementById(id).checked)
+        } else {
+            printCoins += `<input class="form-check-input" style="float:right;" type="checkbox" role="switch" onclick="ifChecked(id)" id = "${coin.symbol}" >
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>`
+        }
+        printCoins += `<div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;"></div>`
+        printCoins += `</div>`
+        printCoins += `  <div class="card-text">${coin.name}</div><br>
+                        <button class="btn btn-primary" type="" data-bs-toggle="collapse" data-bs-target="#${IdName}">more info</button>
+                        <div class="collapse" id="${IdName}"><br>
+                        <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
+                        <div><strong>USD :</strong> ${coin.market_data.current_price.usd} $</div>
+                        <div><strong>EUR :</strong> ${coin.market_data.current_price.eur} €</div>
+                        <div><strong>ILS :</strong> ${coin.market_data.current_price.ils} ₪</div>
+                        </div>
+                        </div>`
+        printCoins += `</div>`
+        printCoins += `</div>`
+        coinContainer.innerHTML += printCoins
+        index++;
+    }
+}
+
+
+function ifChecked(id, index) {
+    if (document.getElementById(id).checked) {
+        checkedCoin.push(id)
+        localStorage.checkedCoin = JSON.stringify(checkedCoin)
+        console.log(id, ": on")
+    } else {
+        checkedCoin.splice(index, 1);
+        localStorage.setItem('checkedCoin', JSON.stringify(checkedCoin));
+        console.log(id, ": off")
+
     }
 
 }
 
-// function printSingleCoin() {
-//     for (var i = 0; i < coins.length; i++) {
-//         printCoin(coins[i].coin)
-//     }
-
-// }
-
-function printCoin(coin) {
-    let IdName = "cardID" + coin.id
-    coinContainer.innerHTML += `
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
-    <div class="card">
-    <div class="card-body">
-    <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck" onchange="toggleSelect()">
-    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-    <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
-    </div>
-    </div>
-    <div>
-    <div class="card-text">${coin.name}</div><br>
-    <button class="btn btn-primary" type="" data-bs-toggle="collapse" data-bs-target="#${IdName}">more info</button>
-    <div class="collapse" id="${IdName}"><br>
-    <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
-    <div><strong>USD :</strong> ${coin.market_data.current_price.usd} $</div>
-    <div><strong>EUR :</strong> ${coin.market_data.current_price.eur} €</div>
-    <div><strong>ILS :</strong> ${coin.market_data.current_price.ils} ₪</div>
-    </div>
-    </div>
-    </div>
-    </div> 
-`
-}
 
 
 function printSingleCoin(coin) {
     let IdName = "cardID" + coin.id
-    let index = coin.name
-    coinContainer.innerHTML = `
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
-    <div class="card">
-    <div class="card-body">
-    <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck" onchange="toggleSelect()">
-    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-    <div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;">
-    </div>
-    </div>
-    <div>
-    <div class="card-text">${coin.name}</div><br>
-    <button class="btn btn-primary" type="" data-bs-toggle="collapse" data-bs-target="#${IdName}">more info</button>
-    <div class="collapse" id="${IdName}"><br>
-    <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
-    <div><strong>USD :</strong> ${coin.market_data.current_price.usd} $</div>
-    <div><strong>EUR :</strong> ${coin.market_data.current_price.eur} €</div>
-    <div><strong>ILS :</strong> ${coin.market_data.current_price.ils} ₪</div>
-    </div>
-    </div>
-    </div>
-    </div> 
-`
-    console.log(IdName)
+    let coinId = coin.id
+    let printCoins = ''
+    printCoins += `<div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">`
+    printCoins += `<div class="card">`
+    printCoins += `<div class="card-body">`
+    printCoins += `<div class="form-check form-switch">`
+    if (coin.selected == true) {
+        printCoins += `<input class="form-check-input" style="float:right;" type="checkbox" role="switch" id="${coinId}" onclick="ifChecked(id)" id = "${coinId} checked" >
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>`
+
+    } else {
+        printCoins += `<input class="form-check-input" style="float:right;" type="checkbox" role="switch" id="${coinId}" onclick="ifChecked(id)" id = "${coinId}" >
+        <label class="form-check-label" for="flexSwitchCheckDefault"></label>`
+    }
+    printCoins += `<div class="card-title" id="cardTitle">${coin.symbol} <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="width:50px; height:50px;"></div>`
+    printCoins += `</div>`
+    printCoins += `  <div class="card-text">${coin.name}</div><br>
+                        <button class="btn btn-primary" type="" data-bs-toggle="collapse" data-bs-target="#${IdName}">more info</button>
+                        <div class="collapse" id="${IdName}"><br>
+                        <img class="card-img" id="coinImg" src="${coin.image.thumb}" style="float:right; width:70px; height:70px;">
+                        <div><strong>USD :</strong> ${coin.market_data.current_price.usd} $</div>
+                        <div><strong>EUR :</strong> ${coin.market_data.current_price.eur} €</div>
+                        <div><strong>ILS :</strong> ${coin.market_data.current_price.ils} ₪</div>
+                        </div>
+                        </div>`
+    printCoins += `</div>`
+    printCoins += `</div>`
+    coinContainer.innerHTML = printCoins
 }
+
 
 
 
