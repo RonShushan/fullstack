@@ -1,0 +1,135 @@
+.topTitle {
+    height: 100px;
+    width: 100%;
+    font-size: 30px;
+    background-color: #fc8404;
+    overflow:hidden;
+}
+body{
+    background-image: url("bitcoin-div.png");
+    margin-left: auto;
+    margin-right: auto;
+    /* overflow: hidden; */
+    height: auto;
+
+
+
+}
+
+/* .navbarDV {
+    height: 30px;;
+
+} */
+
+.navbar-toggler {
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.nav-link
+.d-flex{
+    float:right;
+}
+
+#coinContainer  {
+    /* width:95%;  */
+    /* margin-left: auto;  */
+    /* overflow: scroll; */
+    width:100%;
+    height:100%;
+    
+}
+
+.canvasjs-chart-credit{
+    position: static;
+}
+
+.canvasjs-chart-canvas{
+    height: 370px;
+    width: 70%;
+    overflow:hidden;
+    /* margin: 15%; */
+    margin-right: auto;
+
+
+}
+
+.canvasjs-chart-container{
+    margin-top: 20px;
+    margin-right: 3%;
+    height: 376px; 
+    width: 100%;
+    /* height: 100%;  */
+}
+
+
+.AboutDV{
+    height: 130px; 
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    background-color: #f8b262;
+    border-radius: 12px;
+    opacity: 90%;
+    overflow:auto;
+
+}
+
+#AboutInfo{
+    text-align: center;
+    overflow: hidden;
+    height: 130px; 
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    background-color: #f8b262;
+    border-radius: 12px;
+    opacity: 90%;
+    font-size: 20px;
+
+}
+
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px; 
+    width:240px;
+    height:auto;
+    border-radius: 10px;
+        /* background-image: url("bitcoin-back.png"); */
+}
+
+
+.card.expanded {
+    height: 400px;
+}
+
+.card-body{
+    /* margin-right: 60px; */
+    width: 100%;
+
+}
+
+
+.card-title {
+    display: inline;
+    margin-left: -45px;
+    text-align: left;
+    
+
+}
+
+.card-text {
+    text-align: left;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+
+}
+
+
+
+/* #SwitchCheck{
+    float:right;
+} */
