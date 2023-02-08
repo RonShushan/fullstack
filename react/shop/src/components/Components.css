@@ -1,0 +1,21 @@
+
+.headerComp{
+    font-size: 40px;
+    padding: 20px;
+    background-color: #d7d7d7;
+}
+
+.imgCardDv{
+    width:100%;
+    margin: auto;
+    padding: 10px;
+}
+
+.mainCard{
+    border: 1px solid gray;
+}
+
+.imgCard{
+    width:200px;
+    height:200px
+}

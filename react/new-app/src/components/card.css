@@ -3,3 +3,8 @@
     margin-top: 10px;
     padding: 10px;
 }
+
+.userCardContainer{
+    border: 1px solid gray;
+    padding: 20px;
+}

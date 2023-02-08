@@ -1,0 +1,18 @@
+.box{
+    width:100px;
+    height:100px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.green{
+    background: green;
+}
+
+.blue{
+    background: blue;
+}
+
+.red{
+    background: red;
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import FullComponent from '../components/FullComponent';
+import FunctionComponent from '../components/FunctionComponent';
 import './Home.css'
+import axios from 'axios';
 
 class Home extends Component {
     //JS Start
@@ -16,13 +19,29 @@ class Home extends Component {
     }
 
 
-    constructor(props) {
-        super(props);
-        console.log("Name : " , this.state.name )
+    // constructor(props) {
+    //     super(props);
+    //     console.log("Name : " , this.state.name )
 
-        if(this.num > 10){
+    //     if(this.num > 10){
 
-        }
+    //     }
+    // }
+
+    componentDidMount(){
+        axios.get(`https://jsonplaceholder.typicode.com/users`)
+        .then(res => {
+          const persons = res.data;
+          this.setState({ persons });
+          console.log(res.data)
+        })
+
+        this.getPlaceHolder()
+    }
+
+    getPlaceHolder = async() =>{
+        let res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        console.log("RESSSS : " , res.data)
     }
     
     changeMyName(){
@@ -33,13 +52,15 @@ class Home extends Component {
         console.log("My name is : " , this.state , this.ob)
     }
 
-    //HTML Start
+    functionComponentClicked(){
+        console.log("Function Component Clicked")
+    }
+
     render() { 
         return ( 
             <div className='p-5'>
-               <button type='button' className='btn-primary' onClick={()=>this.changeMyName()}> Change Name</button>
-               <div>My Name is {this.state.name}</div>
-               <div>My Name is {this.ob.name}</div>
+               <FullComponent name={this.ob.name}></FullComponent>
+               <FunctionComponent name = {this.state.name} fn={this.functionComponentClicked} ></FunctionComponent>
             </div>
         );
     }
